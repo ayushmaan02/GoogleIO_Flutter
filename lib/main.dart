@@ -29,10 +29,44 @@ class _RandomState extends State<Random> {
 
   @override
   Widget build(BuildContext context) {
+    void pushsaved() {
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          // NEW lines from here...
+          builder: (BuildContext context) {
+            final tiles = saved.map(
+              (WordPair pair) {
+                return ListTile(
+                  title: Text(
+                    pair.asPascalCase,
+                    style: biggerFont,
+                  ),
+                );
+              },
+            );
+            final divided = tiles.isNotEmpty
+                ? ListTile.divideTiles(context: context, tiles: tiles).toList()
+                : <Widget>[];
+            return Scaffold(
+              appBar: AppBar(
+                title: Text("Saved Suggestions"),
+              ),
+              body: ListView(
+                children: divided,
+              ),
+            );
+          },
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text("Startup Name Generator"),
+        actions: [
+          IconButton(icon: Icon(Icons.list), onPressed: pushsaved),
+        ],
       ),
       body: _buildSuggestions(),
     );
