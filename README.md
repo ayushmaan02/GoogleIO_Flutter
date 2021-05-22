@@ -1,7 +1,7 @@
 # gioapp 
 It's a basic flutter project learned from Google I/O session of Building your first Flutter app.
-
-_Learned how to create an infinite scrolling ListView._
+ 
+_Learned how to create an infinite scrolling ListView,Addition of Intraction, Navigation over new screen_
 ## Project Overview
 ![](Google_IO.gif)
 ## Getting Started
