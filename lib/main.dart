@@ -24,7 +24,9 @@ class Random extends StatefulWidget {
 
 class _RandomState extends State<Random> {
   final suggestion = <WordPair>[];
+  final saved = <WordPair>{};
   final biggerFont = TextStyle(fontSize: 18);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +39,16 @@ class _RandomState extends State<Random> {
   }
 
   Widget _buildRow(WordPair pair) {
+    final alreadysaved = saved.contains(pair);
     return ListTile(
-      title: Text(pair.asPascalCase, style: biggerFont),
+      title: Text(
+        pair.asPascalCase,
+        style: biggerFont,
+      ),
+      trailing: Icon(
+        alreadysaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadysaved ? Colors.red : null,
+      ),
     );
   }
 
