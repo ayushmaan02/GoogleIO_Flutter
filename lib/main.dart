@@ -49,6 +49,15 @@ class _RandomState extends State<Random> {
         alreadysaved ? Icons.favorite : Icons.favorite_border,
         color: alreadysaved ? Colors.red : null,
       ),
+      onTap: () {
+        setState(() {
+          if (alreadysaved) {
+            saved.remove(pair);
+          } else {
+            saved.add(pair);
+          }
+        });
+      },
     );
   }
 
